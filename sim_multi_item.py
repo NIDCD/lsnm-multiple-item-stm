@@ -77,7 +77,7 @@ import importlib as il
 import sys
 
 # import 'PyQt4' modules, which give you access to GUI functions
-from PyQt4 import QtGui, QtCore
+from PyQt5 import QtGui, QtCore, QtWidgets
 
 # create a class that will allow us to print output to our GUI widget
 class MyStream(QtCore.QObject):
@@ -91,7 +91,7 @@ class MyStream(QtCore.QObject):
         self.message.emit(str(message))
 
 # create a class for our GUI and define its methods
-class LSNM(QtGui.QWidget):
+class LSNM(QtWidgets.QWidget):
 
     def __init__(self):
 
@@ -109,62 +109,62 @@ class LSNM(QtGui.QWidget):
         script=''
 
         # create a grid layout and set a spacing of 10 between widgets
-        layout = QtGui.QGridLayout(self)
+        layout = QtWidgets.QGridLayout(self)
         layout.setSpacing(10)
 
         # Define what happens if users press EXIT on the toolbar
-        exitAction = QtGui.QAction(QtGui.QIcon.fromTheme('exit'), 'Exit', self)
+        exitAction = QtWidgets.QAction(QtGui.QIcon.fromTheme('exit'), 'Exit', self)
         exitAction.setShortcut('Ctrl+Q')
         exitAction.setStatusTip('Exit application')
         exitAction.triggered.connect(self.close)
 
         # create a push button object for opening file with model description
-        uploadModelButton = QtGui.QPushButton('STEP ONE: Upload your model: ' + model, self)
+        uploadModelButton = QtWidgets.QPushButton('STEP ONE: Upload your model: ' + model, self)
         layout.addWidget(uploadModelButton, 0, 0)
         # define the action to be taken if upload model button is clicked on
         uploadModelButton.clicked.connect(self.browseModels)
 
         # create a text edit object for reading file with model description
-        self.modelTextEdit = QtGui.QTextEdit()
+        self.modelTextEdit = QtWidgets.QTextEdit()
         layout.addWidget(self.modelTextEdit, 1, 0)
 
         # create a push button for uploading file containing list of network weights
-        uploadWeightsButton = QtGui.QPushButton('STEP TWO: Upload your weights: ' + weights_list, self)
+        uploadWeightsButton = QtWidgets.QPushButton('STEP TWO: Upload your weights: ' + weights_list, self)
         layout.addWidget(uploadWeightsButton, 0, 1)
         # define the action to be taken if upload weights button is clicked on
         uploadWeightsButton.clicked.connect(self.browseWeights)
         
         # create a text edit object for reading file with model description
-        self.weightsTextEdit = QtGui.QTextEdit()
+        self.weightsTextEdit = QtWidgets.QTextEdit()
         layout.addWidget(self.weightsTextEdit, 1, 1)
 
         # create a button for uploading file containing experimental script to be simulated
-        uploadScriptButton = QtGui.QPushButton('STEP THREE: Upload your script: ' + script, self)
+        uploadScriptButton = QtWidgets.QPushButton('STEP THREE: Upload your script: ' + script, self)
         layout.addWidget(uploadScriptButton, 0, 2)
         # define the action to be taken if upload script button is clicked on
         uploadScriptButton.clicked.connect(self.browseScripts)
 
         # create a text edit object for reading file with model description
-        self.scriptTextEdit = QtGui.QTextEdit()
+        self.scriptTextEdit = QtWidgets.QTextEdit()
         layout.addWidget(self.scriptTextEdit, 1, 2)
 
         # create a push button object labeled 'Run'
-        runButton = QtGui.QPushButton('STEP FOUR: Run simulation', self)
+        runButton = QtWidgets.QPushButton('STEP FOUR: Run simulation', self)
         layout.addWidget(runButton, 0, 3)
         # define the action to be taken if Run button is clicked on
         runButton.clicked.connect(self.onStart)
     
         # define output display to keep user updated with simulation progress status
-        self.runTextEdit = QtGui.QTextEdit()
+        self.runTextEdit = QtWidgets.QTextEdit()
         layout.addWidget(self.runTextEdit, 1, 3)
 
         # define progress bar to keep user informed of simulation progress status
-        self.progressBar = QtGui.QProgressBar(self)
+        self.progressBar = QtWidgets.QProgressBar(self)
         self.progressBar.setRange(0,100)
         layout.addWidget(self.progressBar, 2, 3)
                         
         # create a push button object labeled 'Exit'
-        exitButton = QtGui.QPushButton('Quit LSNM', self)
+        exitButton = QtWidgets.QPushButton('Quit LSNM', self)
         layout.addWidget(exitButton, 2, 0)
         # define the action to be taken if Exit button is clicked on
         exitButton.clicked.connect(QtCore.QCoreApplication.instance().quit)
@@ -187,7 +187,7 @@ class LSNM(QtGui.QWidget):
         global model
         # allow the user to browse files to find desired input file describing the modules
         # of the network
-        model = QtGui.QFileDialog.getOpenFileName(self, 'Select *.txt file that contains model', '.')
+        model = QtWidgets.QFileDialog.getOpenFileName(self, 'Select *.txt file that contains model', '.')
 
         # open the file containing model description
         f = open(model, 'r')
@@ -201,7 +201,7 @@ class LSNM(QtGui.QWidget):
 
         global weights_list
         # allow the user to browse files to find desired input file with a list of network weights
-        weights_list = QtGui.QFileDialog.getOpenFileName(self, 'Select *.txt file that contains weights list', '.')
+        weights_list = QtWidgets.QFileDialog.getOpenFileName(self, 'Select *.txt file that contains weights list', '.')
 
         # open file containing list of weights
         f = open(weights_list, 'r')
@@ -216,7 +216,7 @@ class LSNM(QtGui.QWidget):
         global script
         # allow user to browse files to find desired input file containing experimental script
         # to be simulated
-        script = QtGui.QFileDialog.getOpenFileName(self, 'Select *.txt file that contains script', '.')
+        script = QtWidgets.QFileDialog.getOpenFileName(self, 'Select *.txt file that contains script', '.')
 
         # open file containing experimental script
         f = open(script, 'r')
@@ -236,11 +236,11 @@ class LSNM(QtGui.QWidget):
     def closeEvent(self, event):
 
         # display a message box to confirm user really intended to quit current session
-        reply = QtGui.QMessageBox.question(self, 'Message',
+        reply = QtWidgets.QMessageBox.question(self, 'Message',
                                            'Are you sure you want to quit LSNM?',
-                                           QtGui.QMessageBox.Yes | QtGui.QMessageBox.No,
-                                           QtGui.QMessageBox.No)
-        if reply == QtGui.QMessageBox.Yes:
+                                           QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No,
+                                           QtWidgets.QMessageBox.No)
+        if reply == QtWidgets.QMessageBox.Yes:
             event.accept()
         else:
             event.ignore()
@@ -987,7 +987,7 @@ class TaskThread(QtCore.QThread):
 def main():
     
     # create application object called 'app'
-    app = QtGui.QApplication([])
+    app = QtWidgets.QApplication([])
 
     # create a widget window called "lsnm"
     lsnm = LSNM()

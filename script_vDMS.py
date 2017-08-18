@@ -40,7 +40,7 @@ def firstStimulusUshape(modules, script_params):
     generates a u-shaped visual input to neural network with parameters given"
     
     """
-    modules['attnv'][8][0][0][0] = script_params[1]
+    modules['attnv_re'][8][0][0][0] = script_params[1]
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
@@ -70,7 +70,7 @@ def secondStimulusNshape(modules, script_params):
     generates a n-shaped visual input to neural network with parameters given"
     
     """
-    modules['attnv'][8][0][0][0] = script_params[0]
+    modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[1]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
@@ -101,7 +101,7 @@ def thirdStimulusCshape(modules, script_params):
     generates a n-shaped visual input to neural network with parameters given"
     
     """
-    modules['attnv'][8][0][0][0] = script_params[0]
+    modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[1]
     modules['attnv_s'][8][0][0][0] = script_params[0]
@@ -132,7 +132,7 @@ def random_shape_1(modules, script_params):
     generates a random visual input to neural network with parameters given
     
     """
-    modules['attnv'][8][0][0][0] = script_params[0]
+    modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[1]
     modules['attnv_s'][8][0][0][0] = script_params[0]
@@ -146,7 +146,7 @@ def random_shape_2(modules, script_params):
     
     """
     
-    modules['attnv'][8][0][0][0] = script_params[0]
+    modules['attnv_re'][8][0][0][0] = script_params[0]
 
     for k1 in range(len(script_params[6])):
         modules['lgns'][8][script_params[6][k1][0]][script_params[6][k1][1]][0] = script_params[3]
@@ -157,7 +157,7 @@ def lastStimulusUshape(modules, script_params):
     generates a u-shaped visual input to neural network with parameters given"
     
     """
-    modules['attnv'][8][0][0][0] = script_params[0]
+    modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[1]
@@ -187,7 +187,7 @@ def firstStimulusdUshape(modules, script_params):
     generates a u-shaped visual input to neural network with parameters given"
     
     """
-    modules['attnv'][8][0][0][0] = script_params[7]
+    modules['attnv_re'][8][0][0][0] = script_params[7]
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
@@ -217,7 +217,7 @@ def secondStimulusdNshape(modules, script_params):
     generates a n-shaped visual input to neural network with parameters given"
     
     """
-    modules['attnv'][8][0][0][0] = script_params[0]
+    modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[7]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
@@ -248,7 +248,7 @@ def thirdStimulusdCshape(modules, script_params):
     generates a n-shaped visual input to neural network with parameters given"
     
     """
-    modules['attnv'][8][0][0][0] = script_params[0]
+    modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[7]
     modules['attnv_s'][8][0][0][0] = script_params[0]
@@ -280,7 +280,7 @@ def lastStimulusdUshape(modules, script_params):
     generates a u-shaped visual input to neural network with parameters given"
     
     """
-    modules['attnv'][8][0][0][0] = script_params[0]
+    modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[7]
@@ -316,7 +316,7 @@ def delay_period(modules, script_params):
     for x in range(modules['lgns'][0]):
         for y in range(modules['lgns'][1]):
             modules['lgns'][8][x][y][0] = script_params[2]
-    modules['attnv'][8][0][0][0] = script_params[2]
+    modules['attnv_re'][8][0][0][0] = script_params[2]
 
 
 
@@ -363,7 +363,7 @@ def intertrial_interval(modules, script_params):
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
-    modules['attnv'][8][0][0][0] = script_params[2]
+    modules['attnv_re'][8][0][0][0] = script_params[2]
 
 def increase_attention(modules, script_params):
     """
