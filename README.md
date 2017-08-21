@@ -1,2 +1,2 @@
 # lsnm-multiple-item-stm
-Source code coming soon
+Model of multiple-item short-term memory
